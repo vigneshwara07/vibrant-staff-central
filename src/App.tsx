@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Employees from "./pages/Employees";
+import Attendance from "./pages/Attendance";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,14 @@ const App = () => (
             element={
               <ProtectedRoute>
                 <Employees />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/attendance" 
+            element={
+              <ProtectedRoute>
+                <Attendance />
               </ProtectedRoute>
             } 
           />

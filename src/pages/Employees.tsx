@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Search, Users, Building, DollarSign, LogOut } from "lucide-react";
+import { Plus, Search, Users, Building, DollarSign, LogOut, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import EmployeeForm from "@/components/EmployeeForm";
 import EmployeeCard from "@/components/EmployeeCard";
@@ -121,6 +120,10 @@ const Employees = () => {
     });
   };
 
+  const handleAttendance = () => {
+    navigate("/attendance");
+  };
+
   const filteredEmployees = employees.filter(employee => {
     const matchesSearch = 
       employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -147,10 +150,16 @@ const Employees = () => {
               <Users className="h-8 w-8 text-blue-600" />
               <h1 className="text-2xl font-bold text-gray-900">Employee Management</h1>
             </div>
-            <Button onClick={handleLogout} variant="outline" size="sm">
-              <LogOut className="h-4 w-4 mr-2" />
-              Logout
-            </Button>
+            <div className="flex items-center space-x-4">
+              <Button onClick={() => navigate("/attendance")} variant="outline" size="sm">
+                <Clock className="h-4 w-4 mr-2" />
+                Attendance
+              </Button>
+              <Button onClick={handleLogout} variant="outline" size="sm">
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
       </header>
